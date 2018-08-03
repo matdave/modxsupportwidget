@@ -6,31 +6,29 @@ MODx.form.SupportWidget = function (config) {
             action: 'mgr/form/submit'
         },
         labelWidth: 55,
-        layout: {
-            type: 'vbox',
-            align: 'stretch'  // Child items are stretched to full width
-        },
+        layout: 'form',
         defaults: {
-            xtype: 'textfield'
+            xtype: 'textfield',
+            anchor: 100
         },
         items: [
             {
                 xtype: 'textfield',
-                fieldLabel: 'Fullname',
+                fieldLabel: _('modxsupport.widget.fullname'),
                 name: 'fullname',
                 value: config.userDetails.fullname,
                 hideLabel: false
             },
             {
                 xtype: 'textfield',
-                fieldLabel: 'Email',
+                fieldLabel: _('modxsupport.widget.email'),
                 name: 'email',
                 value: config.userDetails.email,
                 hideLabel: false
             },
             {
                 xtype: 'textarea',
-                fieldLabel: 'Message',
+                fieldLabel: _('modxsupport.widget.message'),
                 name: 'message',
                 hideLabel: false
             }

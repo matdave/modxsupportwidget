@@ -8,8 +8,9 @@ MODx.form.SupportWidget = function (config) {
         layout: 'form',
         defaults: {
             xtype: 'textfield',
-            anchor: 100
+            anchor: '100%'
         },
+        padding: '8px',
         items: [
             {
                 xtype: 'textfield',

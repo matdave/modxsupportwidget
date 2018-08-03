@@ -7,4 +7,5 @@
  * https://github.com/matdave
  */
 
-$_lang['modxsupportwidget'] = 'MODX Support Widget';
+$_lang['modxsupport.widget'] = 'MODX Support Widget';
+$_lang['modxsupport.widget.desc'] = 'Dashboard widget to contact support.';

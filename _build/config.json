@@ -8,9 +8,9 @@
     "elements": {
       "widgets": [
         {
-          "name": "logrequest.widget.rank",
-          "description": "logrequest.widget.rank_desc",
-          "content": "logrequest_rank.widget.php",
+          "name": "modxsupport.widget",
+          "description": "modxsupport.widget.desc",
+          "content": "modxsupport.widget.php",
           "type": "file",
           "size": "half"
         }

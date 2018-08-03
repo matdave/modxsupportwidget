@@ -5,6 +5,14 @@ MODx.form.SupportWidget = function (config) {
         baseParams: {
             action: 'mgr/form/submit'
         },
+        labelWidth: 55,
+        layout: {
+            type: 'vbox',
+            align: 'stretch'  // Child items are stretched to full width
+        },
+        defaults: {
+            xtype: 'textfield'
+        },
         items: [
             {
                 xtype: 'textfield',
@@ -17,13 +25,22 @@ MODx.form.SupportWidget = function (config) {
                 fieldLabel: _('modxsupport.widget.email'),
                 name: 'email',
                 value: config.userDetails.email
+            },{
+                plugins: [ Ext.ux.FieldLabeler ],
+                fieldLabel: 'Subject',
+                name: 'subject'
             },
             {
                 xtype: 'textarea',
                 fieldLabel: _('modxsupport.widget.message'),
-                name: 'message'
+                name: 'message',
+                flex: 1
             }
-        ]
+        ],
+
+        buttons: [{
+            text: 'Send'
+        }]
     });
     MODx.form.SupportWidget.superclass.constructor.call(this, config);
 };

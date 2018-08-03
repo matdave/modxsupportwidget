@@ -21,7 +21,7 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
         $this->controller->addLexiconTopic($this->widget->get('lexicon'));
         $assetsUrl = $modxsupportwidget->getOption('assetsUrl');
         $jsUrl = $modxsupportwidget->getOption('jsUrl');
-        $cssUrl = $modxsupportwidget->getOption('cssUrl') . 'mgr/';
+        $cssUrl = $modxsupportwidget->getOption('cssUrl');
         $this->controller->addJavascript($jsUrl . 'modxsupportwidget.min.js');
         $this->controller->addCss($cssUrl . 'support.css');
 

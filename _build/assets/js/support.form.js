@@ -5,7 +5,6 @@ MODx.form.SupportWidget = function (config) {
         baseParams: {
             action: 'mgr/form/submit'
         },
-        labelWidth: 55,
         layout: 'form',
         defaults: {
             xtype: 'textfield',

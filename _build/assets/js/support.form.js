@@ -1,4 +1,4 @@
-MODx.FormSupportWidget = function (config) {
+MODx.form.SupportWidget = function (config) {
     config = config || {};
     Ext.applyIf(config, {
         url: config.connector_url,
@@ -25,9 +25,9 @@ MODx.FormSupportWidget = function (config) {
             }
         ]
     });
-    MODx.FormSupportWidget.superclass.constructor.call(this, config);
+    MODx.form.SupportWidget.superclass.constructor.call(this, config);
 };
-Ext.extend(MODx.FormSupportWidget, MODx.FormPanel, {
+Ext.extend(MODx.form.SupportWidget, MODx.FormPanel, {
 
 });
-Ext.reg('modx-form-supportwidget', MODx.FormSupportWidget);
+Ext.reg('modx-form-supportwidget', MODx.form.SupportWidget);

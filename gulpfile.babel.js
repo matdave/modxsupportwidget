@@ -32,18 +32,12 @@ gulp.task('build-web-dev', ['webpack:build-web-dev', 'css'], () => {
     gulp.watch(['./_build/assets/sass/*.scss'], ['css']);
 });
 
-gulp.task('css', function() {
-    var sassStream = sass('./_build/assets/sass/support.scss', {
-        style: 'compressed',
-        loadPath: [
-            './_build/assets/sass'
-        ]
-    });
-
-    return sassStream
-        .pipe(concat('modxsupportwidget.min.css'))
-        .pipe(gulp.dest('./assets/components/modxsupportwidget/mgr/css'));
-});
+gulp.task('css', () =>
+    sass('./_build/assets/sass/support.scss', {
+        style: 'compressed'
+    }).pipe(concat('modxsupportwidget.min.css'))
+        .pipe(gulp.dest('./assets/components/modxsupportwidget/mgr/css'))
+);
 
 // Run Babel only
 gulp.task('build-babel', ['clean'], () =>

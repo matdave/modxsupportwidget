@@ -1,0 +1,1 @@
+<div id="modx-form-supportwidget"></div>

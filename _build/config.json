@@ -1,0 +1,33 @@
+{
+  "name": "MODX Support Widget",
+  "lowCaseName": "modxsupportwidget",
+  "description": "Easy dashboard widget support form",
+  "author": "matdave",
+  "version": "1.0.0",
+  "package": {
+    "elements": {
+      "widgets": [
+        {
+          "name": "logrequest.widget.rank",
+          "description": "logrequest.widget.rank_desc",
+          "content": "logrequest_rank.widget.php",
+          "type": "file",
+          "size": "half"
+        }
+      ]
+    },
+    "systemSettings": [
+      {
+        "key": "support_email",
+        "type": "text",
+        "area": "system",
+        "value": "support@modxcms.com"
+      }
+    ]
+  },
+  "build": {
+    "readme": "docs/readme.txt",
+    "license": "docs/license.txt",
+    "changelog": "docs/changelog.txt"
+  }
+}

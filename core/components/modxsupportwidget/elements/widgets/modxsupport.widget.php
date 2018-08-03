@@ -25,15 +25,7 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
         $this->controller->addJavascript($jsUrl . 'modxsupportwidget.min.js');
         $this->controller->addCss($cssUrl . 'support.css');
 
-        $userArray = array();
-        $user = $this->modx->user;
-        if(!empty($user)){
-            $userArray = $user->toArray();
-            $profile = $user->getOne('Profile');
-            if(!empty($profile)){
-                $userArray = array_merge($profile->toArray(),$userArray);
-            }
-        }
+        $userArray = array('id'=>$modxsupportwidget->userArray['id'], 'fullname'=>$modxsupportwidget->userArray['fullname'], 'email'=>$modxsupportwidget->userArray['email']);
 
         $this->controller->addHtml('<script type="text/javascript">Ext.onReady(function() {
     MODx.load({

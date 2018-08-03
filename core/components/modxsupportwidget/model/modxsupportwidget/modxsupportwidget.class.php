@@ -13,14 +13,23 @@ class modxSupportWidget
     public $namespace = 'modxsupportwidget';
     public $cache = null;
     public $options = array();
+    public $supportEmail = null;
+    public $userArray = array();
 
     public function __construct(modX &$modx, array $options = array())
     {
         $this->modx =& $modx;
         $corePath = $this->getOption('core_path', $options, $this->modx->getOption('core_path', null, MODX_CORE_PATH) . 'components/modxsupportwidget/');
         $assetsUrl = $this->getOption('assets_url', $options, $this->modx->getOption('assets_url', null, MODX_ASSETS_URL) . 'components/modxsupportwidget/');
-        $supportEmail = $this->getOption('support_email', $options, 'support@modxcloud.com');
-        /* loads some default paths for easier management */
+        $this->supportEmail = $this->getOption('support_email', $options, 'help@modx.com');
+        $user = $this->modx->user;
+        if(!empty($user)){
+            $this->userArray = $user->toArray();
+            $profile = $user->getOne('Profile');
+            if(!empty($profile)){
+                $this->userArray = array_merge($profile->toArray(),$this->userArray);
+            }
+        }
         $this->options = array_merge(array(
             'namespace' => $this->namespace,
             'corePath' => $corePath,

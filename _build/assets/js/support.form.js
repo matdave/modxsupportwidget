@@ -16,21 +16,21 @@ MODx.form.SupportWidget = function (config) {
         items: [
             {
                 xtype: 'textfield',
-                fieldLabel: _('modxsupport.widget.fullname'),
+                fieldLabel: 'Fullname',
                 name: 'fullname',
                 value: config.userDetails.fullname,
                 hideLabel: false
             },
             {
                 xtype: 'textfield',
-                fieldLabel: _('modxsupport.widget.email'),
+                fieldLabel: 'Email',
                 name: 'email',
                 value: config.userDetails.email,
                 hideLabel: false
             },
             {
                 xtype: 'textarea',
-                fieldLabel: _('modxsupport.widget.message'),
+                fieldLabel: 'Message',
                 name: 'message',
                 hideLabel: false
             }

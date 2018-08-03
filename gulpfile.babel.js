@@ -35,8 +35,7 @@ gulp.task('build-web-dev', ['webpack:build-web-dev', 'css'], () => {
 gulp.task('css', () =>
     sass('./_build/assets/sass/support.scss', {
         style: 'compressed'
-    }).pipe(concat('modxsupportwidget.min.css'))
-        .pipe(gulp.dest('./assets/components/modxsupportwidget/mgr/css'))
+    }).pipe(gulp.dest('./assets/components/modxsupportwidget/mgr/css'))
 );
 
 // Run Babel only

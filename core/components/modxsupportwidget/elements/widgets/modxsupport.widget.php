@@ -23,7 +23,7 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
         $jsUrl = $modxsupportwidget->getOption('jsUrl');
         $cssUrl = $modxsupportwidget->getOption('cssUrl') . 'mgr/';
         $this->controller->addJavascript($jsUrl . 'modxsupportwidget.min.js');
-        $this->controller->addCss($cssUrl . 'modxsupportwidget.min.css');
+        $this->controller->addCss($cssUrl . 'support.css');
 
         $userArray = array();
         $user = $this->modx->user;

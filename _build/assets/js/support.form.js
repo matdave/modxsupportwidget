@@ -25,10 +25,6 @@ MODx.form.SupportWidget = function (config) {
                 fieldLabel: _('modxsupport.widget.email'),
                 name: 'email',
                 value: config.userDetails.email
-            },{
-                plugins: [ Ext.ux.FieldLabeler ],
-                fieldLabel: 'Subject',
-                name: 'subject'
             },
             {
                 xtype: 'textarea',

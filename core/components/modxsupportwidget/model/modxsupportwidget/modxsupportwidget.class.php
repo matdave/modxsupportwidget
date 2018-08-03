@@ -44,7 +44,6 @@ class modxSupportWidget
         ), $options);
         $this->modx->addPackage('modxsupportwidget', $this->getOption('modelPath'));
         $this->modx->lexicon->load('modxsupportwidget:default');
-        $this->autoload();
     }
     /**
      * Get a local configuration option or a namespaced system setting by key.

@@ -20,15 +20,6 @@ class modxSupportWidget
         $corePath = $this->getOption('core_path', $options, $this->modx->getOption('core_path', null, MODX_CORE_PATH) . 'components/modxsupportwidget/');
         $assetsUrl = $this->getOption('assets_url', $options, $this->modx->getOption('assets_url', null, MODX_ASSETS_URL) . 'components/modxsupportwidget/');
         $supportEmail = $this->getOption('support_email', $options, 'support@modxcloud.com');
-        $userArray = array();
-        $user = $this->modx->user;
-        if(empty($user)){
-            $userArray = $user->toArray();
-            $profile = $user->getOne('Profile');
-            if(!empty($profile)){
-                $userArray = array_merge($profile->toArray(),$userArray);
-            }
-        }
         /* loads some default paths for easier management */
         $this->options = array_merge(array(
             'namespace' => $this->namespace,
@@ -39,8 +30,7 @@ class modxSupportWidget
             'assetsUrl' => $assetsUrl,
             'jsUrl' => $assetsUrl . 'mgr/js/',
             'cssUrl' => $assetsUrl . 'mgr/css/',
-            'connectorUrl' => $assetsUrl . 'connector.php',
-            'userDetails' => $userArray
+            'connectorUrl' => $assetsUrl . 'connector.php'
         ), $options);
         $this->modx->addPackage('modxsupportwidget', $this->getOption('modelPath'));
         $this->modx->lexicon->load('modxsupportwidget:default');

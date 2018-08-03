@@ -25,11 +25,22 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
         $this->controller->addJavascript($jsUrl . 'modxsupportwidget.min.js');
         $this->controller->addCss($cssUrl . 'modxsupportwidget.min.css');
 
+        $userArray = array();
+        $user = $this->modx->user;
+        if(empty($user)){
+            $userArray = $user->toArray();
+            $profile = $user->getOne('Profile');
+            if(!empty($profile)){
+                $userArray = array_merge($profile->toArray(),$userArray);
+            }
+        }
+
         $this->controller->addHtml('<script type="text/javascript">Ext.onReady(function() {
     MODx.load({
         xtype: "modx-form-supportwidget",
         renderTo: "modx-form-supportwidget",
-        connector_url: "' . $modxsupportwidget->getOption('connectorUrl') . '"
+        connector_url: "' . $modxsupportwidget->getOption('connectorUrl') . '",
+        userDetails: ' . $this->modx->toJSON($userArray) . '
     });
 });</script>');
         return $this->getFileChunk($modxsupportwidget->getOption('templatesPath') . 'modxsupportwidget.tpl');

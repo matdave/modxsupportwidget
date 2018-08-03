@@ -9,3 +9,6 @@
 
 $_lang['modxsupport.widget'] = 'MODX Support Widget';
 $_lang['modxsupport.widget.desc'] = 'Dashboard widget to contact support.';
+$_lang['modxsupport.widget.fullname'] = 'Full Name';
+$_lang['modxsupport.widget.email'] = 'Email';
+$_lang['modxsupport.widget.message'] = 'How Can We Help?';

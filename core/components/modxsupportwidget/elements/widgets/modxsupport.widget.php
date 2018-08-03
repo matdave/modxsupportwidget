@@ -27,7 +27,7 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
 
         $userArray = array();
         $user = $this->modx->user;
-        if(empty($user)){
+        if(!empty($user)){
             $userArray = $user->toArray();
             $profile = $user->getOne('Profile');
             if(!empty($profile)){

@@ -15,6 +15,8 @@ MODx.form.SupportWidget = function (config) {
         padding: '8px',
         header: true,
         title: _('modxsupport.widget.intro'),
+        titleCollapse: false,
+        collapsible: false,
         items: [
             {
                 xtype: 'textfield',

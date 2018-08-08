@@ -7,6 +7,10 @@ Site: [[++site_url]] <br />
 Version: [[+version]] <br />
 User: [[+username]] ( [[+id]] ) <br />
 Log Size: [[+logsize]] <br />
+Session Size: [[+sessions]] <br />
+Resource Size: [[+resources]] <br />
+Action Size: [[+actions]] <br />
+VersionX Size: [[+versionx]] <br />
 Packages: [[+packages]] <br />
 Client Info: [[+client]] <br />
 <br />

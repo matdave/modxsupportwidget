@@ -194,4 +194,41 @@ class modxSupportWidget
 
         return $message;
     }
+
+    public function countResources(){
+        $c = $this->modx->newQuery('modResource');
+        return $this->modx->getCount('modResource', $c);
+    }
+
+    public function countSessions(){
+        $c = $this->modx->newQuery('modSession');
+        return $this->modx->getCount('modSession', $c);
+    }
+
+    public function countActions(){
+        $c = $this->modx->newQuery('modManagerLog');
+        return $this->modx->getCount('modManagerLog', $c);
+    }
+
+    public function countVersionX(){
+        $path = $this->modx->getOption('versionx.core_path', null, MODX_CORE_PATH . 'components/versionx/');
+        $versionx = $this->modx->getService('versionx', 'VersionX', $path . 'model/');
+        if (!$versionx) {
+            return 'N/A';
+        }
+        $return = '';
+        $c = $this->modx->newQuery('vxChunk');
+        $return  .= 'vxChunk = '. $this->modx->getCount('vxChunk', $c).'; ';
+        $c = $this->modx->newQuery('vxPlugin');
+        $return  .= 'vxPlugin = '. $this->modx->getCount('vxPlugin', $c).'; ';
+        $c = $this->modx->newQuery('vxResource');
+        $return  .= 'vxResource = '. $this->modx->getCount('vxResource', $c).'; ';
+        $c = $this->modx->newQuery('vxSnippet');
+        $return  .= 'vxSnippet = '. $this->modx->getCount('vxSnippet', $c).'; ';
+        $c = $this->modx->newQuery('vxTemplate');
+        $return  .= 'vxTemplate = '. $this->modx->getCount('vxTemplate', $c).'; ';
+        $c = $this->modx->newQuery('vxTemplateVar');
+        $return  .= 'vxTemplateVar = '. $this->modx->getCount('vxTemplateVar', $c).'; ';
+        return $return;
+    }
 }

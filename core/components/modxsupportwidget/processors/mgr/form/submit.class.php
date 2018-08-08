@@ -52,6 +52,10 @@ class modxSupportSendProcessor extends modObjectProcessor {
         $properties['client'] = $this->object->getClient();
         $properties['packages'] = $this->object->getPackagesTable();
         $properties['logsize'] = $this->object->getLogSize();
+        $properties['resources'] = $this->object->countResources();
+        $properties['sessions'] = $this->object->countSessions();
+        $properties['actions'] = $this->object->countActions();
+        $properties['versionx'] = $this->object->countVersionX();
         $properties = array_merge($this->object->userArray, $properties);
         $message = $this->object->getFileChunk($this->object->getOption('templatesPath') . 'modxsupportemail.tpl', $properties);
         return $message;

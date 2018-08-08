@@ -9,8 +9,9 @@
 
 $_lang['modxsupport.widget'] = 'MODX Support Widget';
 $_lang['modxsupport.widget.desc'] = 'Dashboard widget to contact support.';
-$_lang['modxsupport.widget.fullname'] = 'Full Name';
-$_lang['modxsupport.widget.email'] = 'Email';
+$_lang['modxsupport.widget.intro'] = '<p>Having trouble with your site? Contact MODX Cloud Support.</p>';
+$_lang['modxsupport.widget.fullname'] = 'Your Name';
+$_lang['modxsupport.widget.email'] = 'Your Email';
 $_lang['modxsupport.widget.message'] = 'How Can We Help?';
 $_lang['modxsupport.widget.submit'] = 'Submitting...';
 $_lang['modxsupport.widget.err_no_fullname'] = 'No Name Provided!';

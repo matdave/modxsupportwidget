@@ -1,6 +1,7 @@
 MODx.form.SupportWidget = function (config) {
     config = config || {};
     Ext.applyIf(config, {
+        id: 'modxsupportwidget',
         url: config.connector_url,
         baseParams: {
             action: 'mgr/form/submit'
@@ -37,7 +38,19 @@ MODx.form.SupportWidget = function (config) {
         buttons: [{
             text: 'Send',
             type: 'submit',
-            process: 'mgr/form/submit'
+            process: 'mgr/form/submit',
+            handler: function(btn) {
+                var form = Ext.getCmp('modxsupportwidget');
+                form.submit({
+                    method : 'POST',
+                    waitMsg : {message:'Submitting'},
+                    success : function() {
+                        Ext.Msg.alert('Thank You', 'Your report has been received', function() {
+                            form.hide();
+                        });
+                    }
+                });
+            }
         }],
         useLoadingMask: true
     });

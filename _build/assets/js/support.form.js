@@ -3,6 +3,7 @@ MODx.form.SupportWidget = function (config) {
     Ext.applyIf(config, {
         id: 'modxsupportwidget',
         url: config.connector_url,
+        saveMsg: _('modxsupport.widget.submit'),
         baseParams: {
             action: 'mgr/form/submit'
         },
@@ -41,10 +42,7 @@ MODx.form.SupportWidget = function (config) {
             process: 'mgr/form/submit',
             handler: function(btn) {
                 var form = Ext.getCmp('modxsupportwidget');
-                form.submit({
-                    method : 'POST',
-                    waitMsg : {message:'Submitting'}
-                });
+                form.submit();
             }
         }],
         useLoadingMask: true
@@ -52,6 +50,11 @@ MODx.form.SupportWidget = function (config) {
     MODx.form.SupportWidget.superclass.constructor.call(this, config);
 };
 Ext.extend(MODx.form.SupportWidget, MODx.FormPanel, {
-
+    success: function(r,f,o,c) {
+        console.log('r' + r);
+        console.log('f' + f);
+        console.log('o' + o);
+        console.log('c' + c);
+    }
 });
 Ext.reg('modx-form-supportwidget', MODx.form.SupportWidget);

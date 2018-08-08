@@ -35,6 +35,7 @@ class modxSupportWidget
             'corePath' => $corePath,
             'modelPath' => $corePath . 'model/',
             'widgetsPath' => $corePath . 'elements/widgets/',
+            'processorsPath' => $corePath . 'processors/',
             'templatesPath' => $corePath . 'templates/',
             'assetsUrl' => $assetsUrl,
             'jsUrl' => $assetsUrl . 'mgr/js/',

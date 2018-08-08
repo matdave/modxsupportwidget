@@ -11,7 +11,7 @@ require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 
 $corePath = $modx->getOption('modxsupportwidget.core_path', null, $modx->getOption('core_path', null, MODX_CORE_PATH) . 'components/modxsupportwidget/');
-$modxsupportwidget = $this->modx->getService('modxsupportwidget', 'modxSupportWidget', $corePath . '/model/modxsupportwidget/', array(
+$modxsupportwidget = $modx->getService('modxsupportwidget', 'modxSupportWidget', $corePath . '/model/modxsupportwidget/', array(
     'core_path' => $corePath
 ));
 

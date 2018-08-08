@@ -6,6 +6,9 @@
  * Date: 8/3/2018
  * https://github.com/matdave
  */
+require_once 'vendor/autoload.php';
+use DeviceDetector\DeviceDetector;
+use DeviceDetector\Parser\Device\DeviceParserAbstract;
 
 class modxSupportWidget
 {
@@ -92,5 +95,25 @@ class modxSupportWidget
             $output = $chunk->process($placeholders);
         }
         return $output;
+    }
+
+    public function getClient() {
+        DeviceParserAbstract::setVersionTruncation(DeviceParserAbstract::VERSION_TRUNCATION_NONE);
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $dd = new DeviceDetector($userAgent);
+        $dd->parse();
+        if ($dd->isBot()) {
+            return array(
+                "bot" => $dd->getBot()
+            );
+        }else{
+            return array(
+                "clientInfo" => $dd->getClient(),
+                "osInfo" => $dd->getOs(),
+                "device" => $dd->getDeviceName(),
+                "brand" => $dd->getBrandName(),
+                "model" => $dd->getModel()
+            );
+        }
     }
 }

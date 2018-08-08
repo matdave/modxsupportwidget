@@ -19,7 +19,6 @@
     "systemSettings": [
       {
         "key": "support_email",
-        "type": "text",
         "area": "system",
         "value": "support@modxcloud.com"
       }

@@ -48,10 +48,7 @@ MODx.form.SupportWidget = function (config) {
         useLoadingMask: true,
         listeners: {
             success: function(r,f,o,c) {
-                console.log('r' + r);
-                console.log('f' + f);
-                console.log('o' + o);
-                console.log('c' + c);
+                console.log(r);
             }
         }
     });

@@ -43,12 +43,7 @@ MODx.form.SupportWidget = function (config) {
                 var form = Ext.getCmp('modxsupportwidget');
                 form.submit({
                     method : 'POST',
-                    waitMsg : {message:'Submitting'},
-                    success : function() {
-                        Ext.Msg.alert('Thank You', 'Your report has been received', function() {
-                            form.hide();
-                        });
-                    }
+                    waitMsg : {message:'Submitting'}
                 });
             }
         }],

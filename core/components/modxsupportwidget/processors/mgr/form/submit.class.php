@@ -83,7 +83,7 @@ class modxSupportSendProcessor extends modObjectProcessor {
             }
         }
 
-        return $this->success();
+        return $this->success($this->modx->lexicon($this->objectType.'.success'));
     }
 }
 

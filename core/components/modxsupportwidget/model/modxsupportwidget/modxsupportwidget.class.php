@@ -67,4 +67,29 @@ class modxSupportWidget
         }
         return $option;
     }
+
+    /**
+     * @param string $tpl
+     * @param array $placeholders
+     * @return string
+     */
+    public function getFileChunk($tpl,array $placeholders = array()) {
+        $output = '';
+        $file = $tpl;
+        if (!file_exists($file)) {
+            $file = $this->modx->getOption('manager_path').'templates/'.$this->modx->getOption('manager_theme',null,'default').'/'.$tpl;
+        }
+        if (!file_exists($file)) {
+            $file = $this->modx->getOption('manager_path').'templates/default/'.$tpl;
+        }
+        if (file_exists($file)) {
+            /** @var modChunk $chunk */
+            $chunk = $this->modx->newObject('modChunk');
+            $chunk->setCacheable(false);
+            $tplContent = file_get_contents($file);
+            $chunk->setContent($tplContent);
+            $output = $chunk->process($placeholders);
+        }
+        return $output;
+    }
 }

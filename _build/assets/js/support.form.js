@@ -36,7 +36,8 @@ MODx.form.SupportWidget = function (config) {
 
         buttons: [{
             text: 'Send',
-            type: 'submit'
+            type: 'submit',
+            process: 'mgr/form/submit'
         }],
         useLoadingMask: true
     });

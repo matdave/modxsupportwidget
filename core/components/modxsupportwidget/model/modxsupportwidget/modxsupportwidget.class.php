@@ -200,6 +200,6 @@ class modxSupportWidget
         $message .="</tbody></table>";
         $message .= ($updates > 0)? "<strong>".$updates." Update(s) Available</strong>":null;
 
-
+        return $message;
     }
 }

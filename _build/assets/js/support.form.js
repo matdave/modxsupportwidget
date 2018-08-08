@@ -35,7 +35,8 @@ MODx.form.SupportWidget = function (config) {
         ],
 
         buttons: [{
-            text: 'Send'
+            text: 'Send',
+            type: 'submit'
         }]
     });
     MODx.form.SupportWidget.superclass.constructor.call(this, config);

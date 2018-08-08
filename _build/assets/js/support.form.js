@@ -48,7 +48,10 @@ MODx.form.SupportWidget = function (config) {
         useLoadingMask: true,
         listeners: {
             success: function(r,f,o,c) {
-                console.log(r);
+                Ext.MessageBox.alert(_('modxsupport.widget.submit'), r.result.message, function(){
+                    return true;
+                });
+
             }
         }
     });

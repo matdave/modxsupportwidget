@@ -13,6 +13,7 @@ MODx.form.SupportWidget = function (config) {
             anchor: '100%'
         },
         padding: '8px',
+        header: true,
         title: _('modxsupport.widget.intro'),
         items: [
             {

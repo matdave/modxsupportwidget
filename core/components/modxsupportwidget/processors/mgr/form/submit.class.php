@@ -49,7 +49,7 @@ class modxSupportSendProcessor extends modObjectProcessor {
         $properties = $this->getProperties();
         $vers = $this->modx->getVersionData();
         $properties['version'] = $vers['full_version'];
-        $properties['client'] = $this->modx->toJSON($this->object->getClient());
+        $properties['client'] = $this->object->getClient();
         $properties['packages'] = $this->object->getPackagesTable();
         $properties['logsize'] = $this->object->getLogSize();
         $properties = array_merge($this->object->userArray, $properties);

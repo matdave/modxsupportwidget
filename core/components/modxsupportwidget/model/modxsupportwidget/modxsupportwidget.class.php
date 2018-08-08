@@ -104,17 +104,9 @@ class modxSupportWidget
         $dd = new DeviceDetector($userAgent);
         $dd->parse();
         if ($dd->isBot()) {
-            return array(
-                "bot" => $dd->getBot()
-            );
+            return $this->modx->toJSON($dd->getBot());
         }else{
-            return array(
-                "clientInfo" => $dd->getClient(),
-                "osInfo" => $dd->getOs(),
-                "device" => $dd->getDeviceName(),
-                "brand" => $dd->getBrandName(),
-                "model" => $dd->getModel()
-            );
+            return $dd->getClient('type').' '.$dd->getClient('name').' '.$dd->getClient('version').' on '.$dd->getOs('name').' '.$dd->getOs('version').' '.$dd->getDeviceName();
         }
     }
 
@@ -192,7 +184,7 @@ class modxSupportWidget
         $packs = $this->getPackages();
         $message = "<table><thead><th>Package</th><th>Version</th><th>Installed</th></thead><tbody>";
         foreach($packs as $m){
-            $message .=  '<tr><td>'.$m['package_name']. ' '. ($m['update'] ? ' (update!)' : null) .'</td><td>' . $m['version']. '</td><td>' . $m['installed'].'</td></tr>';
+            $message .=  '<tr><td>'.$m['package_name']. ' '. ($m['update'] ? ' <strong>(update!)</strong>' : null) .'</td><td>' . $m['version']. '</td><td>' . $m['installed'].'</td></tr>';
             if($m['update']){
                 $updates++;
             }

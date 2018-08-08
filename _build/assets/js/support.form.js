@@ -13,7 +13,7 @@ MODx.form.SupportWidget = function (config) {
             anchor: '100%'
         },
         padding: '8px',
-        html: _('modxsupport.widget.intro'),
+        title: _('modxsupport.widget.intro'),
         items: [
             {
                 xtype: 'textfield',

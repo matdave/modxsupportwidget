@@ -186,4 +186,20 @@ class modxSupportWidget
 
         return array_values($packs);
     }
+
+    public function getPackagesTable(){
+        $updates = 0;
+        $packs = $this->getPackages();
+        $message = "<table><thead><th>Package</th><th>Version</th><th>Installed</th></thead><tbody>";
+        foreach($packs as $m){
+            $message .=  '<tr><td>'.$m['package_name']. ' '. ($m['update'] ? ' (update!)' : null) .'</td><td>' . $m['version']. '</td><td>' . $m['installed'].'</td></tr>';
+            if($m['update']){
+                $updates++;
+            }
+        }
+        $message .="</tbody></table>";
+        $message .= ($updates > 0)? "<strong>".$updates." Update(s) Available</strong>":null;
+
+
+    }
 }

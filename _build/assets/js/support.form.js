@@ -45,16 +45,18 @@ MODx.form.SupportWidget = function (config) {
                 form.submit();
             }
         }],
-        useLoadingMask: true
+        useLoadingMask: true,
+        listeners: {
+            success: function(r,f,o,c) {
+                console.log('r' + r);
+                console.log('f' + f);
+                console.log('o' + o);
+                console.log('c' + c);
+            }
+        }
     });
     MODx.form.SupportWidget.superclass.constructor.call(this, config);
 };
 Ext.extend(MODx.form.SupportWidget, MODx.FormPanel, {
-    success: function(r,f,o,c) {
-        console.log('r' + r);
-        console.log('f' + f);
-        console.log('o' + o);
-        console.log('c' + c);
-    }
 });
 Ext.reg('modx-form-supportwidget', MODx.form.SupportWidget);

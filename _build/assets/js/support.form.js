@@ -37,7 +37,8 @@ MODx.form.SupportWidget = function (config) {
         buttons: [{
             text: 'Send',
             type: 'submit'
-        }]
+        }],
+        useLoadingMask: true
     });
     MODx.form.SupportWidget.superclass.constructor.call(this, config);
 };

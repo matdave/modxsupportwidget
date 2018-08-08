@@ -5,5 +5,7 @@ Full Name: [[+fullname]] <br />
 Email: [[+email]] <br />
 Message: [[+message]] <br />
 Client Info: [[+client]] <br />
+Log Size: [[+logsize]] <br />
+Packages: [[+packages]] <br />
 <br />
 Sent from MODX Support Widget

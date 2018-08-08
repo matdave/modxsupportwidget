@@ -18,6 +18,7 @@ class modxSupportWidget
     public $options = array();
     public $supportEmail = null;
     public $userArray = array();
+    public $providerCache = array();
 
     public function __construct(modX &$modx, array $options = array())
     {
@@ -115,5 +116,74 @@ class modxSupportWidget
                 "model" => $dd->getModel()
             );
         }
+    }
+
+    public function checkForUpdates($package, $modx, $providerCache = array()){
+        $updates = array('count' => 0);
+        if ($package->get('provider') > 0 && $modx->getOption('auto_check_pkg_updates',null,false)) {
+            $updateCacheKey = 'mgr/providers/updates/'.$package->get('provider').'/'.$package->get('signature');
+            $updateCacheOptions = array(
+                xPDO::OPT_CACHE_KEY => $modx->cacheManager->getOption('cache_packages_key', null, 'packages'),
+                xPDO::OPT_CACHE_HANDLER => $modx->cacheManager->getOption('cache_packages_handler', null, $modx->cacheManager->getOption(xPDO::OPT_CACHE_HANDLER)),
+            );
+            $updates = $modx->cacheManager->get($updateCacheKey, $updateCacheOptions);
+            if (empty($updates)) {
+                /* cache providers to speed up load time */
+                /** @var modTransportProvider $provider */
+                if (!empty($providerCache[$package->get('provider')])) {
+                    $provider =& $providerCache[$package->get('provider')];
+                } else {
+                    $provider = $package->getOne('Provider');
+                    if ($provider) {
+                        $providerCache[$provider->get('id')] = $provider;
+                    }
+                }
+                if ($provider) {
+                    $updates = $provider->latest($package->get('signature'));
+                    $updates = array('count' => count($updates));
+                    $modx->cacheManager->set($updateCacheKey, $updates, 1600, $updateCacheOptions);
+                }
+            }
+        }
+        return (int)$updates['count'] >= 1 ? true : false;
+    }
+
+    public function formatBytes($size, $precision = 2) {
+        $base = log($size, 1024);
+        $suffixes = array('', 'K', 'M', 'G', 'T');
+        return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+    }
+
+    public function getLogSize(){
+        $log = $this->modx->getOption(xPDO::OPT_CACHE_PATH) . 'logs/error.log';
+        $logsize = 0;
+        if (file_exists($log)) {
+            $logsize = $this->formatBytes(filesize($log));
+        }
+        return $logsize;
+    }
+    
+    public function getPackages(){
+        //Get Transport Packages
+        $packs = array();
+        $updates = 0;
+        $c = $this->modx->newQuery('transport.modTransportPackage');
+        $c->where(array('installed:IS NOT'=>null));
+        $c->sortby('package_name', 'ASC');
+        $c->sortby('installed', 'ASC');
+        $packages = $this->modx->getCollection('transport.modTransportPackage', $c);
+        if(!empty($packages)){
+            foreach($packages as $p){
+                $update = $this->checkForUpdates($p, $this->modx, $this->providerCache);
+                $packs[$p->get('package_name')] = array(
+                    'update' => $update
+                    ,'package_name' => $p->get('package_name')
+                    ,'version' => $p->get('version_major'). '.' . $p->get('version_minor'). '.' . $p->get('version_patch'). '-' . $p->get('release')
+                    ,'installed' => $p->get('installed')
+                );
+            }
+        }
+
+        return array_values($packs);
     }
 }

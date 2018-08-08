@@ -63,8 +63,11 @@ class modxSupportSendProcessor extends modObjectProcessor {
         $this->modx->mail->setHTML(true);
         if (!$this->modx->mail->send()) {
             $this->modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$this->modx->mail->mailer->ErrorInfo);
+            return false;
         }
         $this->modx->mail->reset();
+
+        return true;
     }
 
     /**
@@ -72,8 +75,8 @@ class modxSupportSendProcessor extends modObjectProcessor {
      * @return array|mixed|string
      */
     public function process() {
+        $message = $this->createMessage();
         foreach ($this->recipients as $recipient) {
-            $message = $this->createMessage();
             $sent = $this->sendMessage($message, $recipient);
             if ($sent !== true) {
                 return $this->failure($sent, $message);

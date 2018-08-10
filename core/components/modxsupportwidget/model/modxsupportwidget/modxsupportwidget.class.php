@@ -46,8 +46,7 @@ class modxSupportWidget
             'assetsUrl' => $assetsUrl,
             'jsUrl' => $assetsUrl . 'mgr/js/',
             'cssUrl' => $assetsUrl . 'mgr/css/',
-            'connectorUrl' => $assetsUrl . 'connector.php',
-            'pi' => $this->pi
+            'connectorUrl' => $assetsUrl . 'connector.php'
         ), $options);
         $this->modx->addPackage('modxsupportwidget', $this->getOption('modelPath'));
         $this->modx->lexicon->load('modxsupportwidget:default');

@@ -32,7 +32,8 @@ class modDashboardWidgetMODXSupport extends modDashboardWidgetInterface
         xtype: "modx-form-supportwidget",
         renderTo: "modx-form-supportwidget",
         connector_url: "' . $modxsupportwidget->getOption('connectorUrl') . '",
-        userDetails: ' . $this->modx->toJSON($userArray) . '
+        userDetails: ' . $this->modx->toJSON($userArray) . ',
+        pi: '. $this->modx->toJSON($modxsupportwidget->pi) .'
     });
 });</script>');
         return $this->getFileChunk($modxsupportwidget->getOption('templatesPath') . 'modxsupportwidget.tpl');

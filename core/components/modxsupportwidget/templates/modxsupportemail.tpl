@@ -12,6 +12,10 @@ Resource Size: [[+resources]] <br />
 Action Size: [[+actions]] <br />
 VersionX Size: [[+versionx]] <br />
 Packages: [[+packages]] <br />
+Database Type: [[+database_type]] <br />
+Database Version: [[+database_version]] <br />
+Database Charset: [[+database_charset]] <br />
+PHP Version: [[+php_version]] <br />
 Client Info: [[+client]] <br />
 <br />
 Sent from MODX Support Widget

@@ -69,6 +69,7 @@ class modxSupportSendProcessor extends modObjectProcessor {
         $this->modx->mail->set(modMail::MAIL_FROM_NAME,$this->modx->getOption('site_name', array(), $this->getProperty('fullname')));
         $this->modx->mail->set(modMail::MAIL_SUBJECT,$this->modx->getOption('site_name'). " " .$this->modx->getOption('site_url') ." Support Request");
         $this->modx->mail->address('to',$recipient);
+        $this->modx->mail->address('reply-to', $this->getProperty('email'), $this->getProperty('fullname'));
         $this->modx->mail->setHTML(true);
         if (!$this->modx->mail->send()) {
             $this->modx->log(modX::LOG_LEVEL_ERROR,'An error occurred while trying to send the email: '.$this->modx->mail->mailer->ErrorInfo);

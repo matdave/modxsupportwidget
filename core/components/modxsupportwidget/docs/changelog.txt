@@ -1,5 +1,7 @@
 Changelog for MODX Support Widget
 ========================
+- 1.0.1
+    - Added Russian translations
 
 - 1.0.0
     - Initial public release

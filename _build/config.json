@@ -3,7 +3,7 @@
   "lowCaseName": "modxsupportwidget",
   "description": "Easy dashboard widget support form",
   "author": "matdave",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "package": {
     "elements": {
       "widgets": [

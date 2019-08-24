@@ -13,7 +13,7 @@ $mtime = $mtime[1] + $mtime[0];
 $tstart = $mtime;
 set_time_limit(0);
 /* define package name */
-define('PKG_NAME','Fred');
+define('PKG_NAME','MODXSupportWidget');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 /* define sources */
 $root = dirname(dirname(__FILE__)).'/';
